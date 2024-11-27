@@ -47,15 +47,25 @@ Esta es un guía para nuestro proyecto, tiene el fin de mantener un formato de c
    > Tipos y cuándo usarlos:
 
    - `[feat]` A new feature
+      > Ejemplo: `[feat] Add user authentication system`
    - `[fix]` A bug fix
+      > Ejemplo: `[fix] Resolve login validation error`
    - `[docs]` Documentation changes
-   - `[style]` Changes that do not affect the meaning of the code (formatting, etc.)
+      > Ejemplo: `[docs] Update API endpoints documentation`
+   - `[style]` Changes that do not affect the meaning of the code
+      > Ejemplo: `[style] Format according to style guide`
    - `[refactor]` Code changes that neither fix a bug nor add a feature
+      > Ejemplo: `[refactor] Restructure authentication module`
    - `[perf]` Changes that improve performance
-   - `[test]` Adding missing tests or correcting existing tests
-   - `[build]` Changes that affect the build system or external dependencies
-   - `[ci]` Changes to CI configuration files and scripts
-   - `[chore]` Maintenance changes that do not fall into any of the other categories
+      > Ejemplo: `[perf] Optimize database queries`
+   - `[test]` Adding or correcting tests
+      > Ejemplo: `[test] Add unit tests for auth module`
+   - `[build]` Changes that affect the build system
+      > Ejemplo: `[build] Update dependency versions`
+   - `[ci]` Changes to CI configuration
+      > Ejemplo: `[ci] Add automated deployment workflow`
+   - `[chore]` Other maintenance changes
+      > Ejemplo: `[chore] Clean up deprecated files`
 
 ### 5️⃣ Correr el proyecto localmente
 
