@@ -22,7 +22,6 @@ const STORE_LOCATION = {
 // data/about.ts
 export const COMPANY_STATS: Stat[] = [
   { label: 'Years of Experience', value: '25+' },
-  // ... other stats
 ];
 
 export const COMPANY_VALUES: Value[] = [
@@ -31,7 +30,6 @@ export const COMPANY_VALUES: Value[] = [
     title: 'Quality Assurance',
     description: 'Every vehicle undergoes rigorous inspection and certification.'
   },
-  // ... other values
 ];
 
 export default function About() {
