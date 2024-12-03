@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  # Servicio frontend (React)
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "8080:80"  # Mapea el puerto 80 del contenedor al puerto 8080 del host
+    networks:
+      - app-network
+
+  # Servicio backend (PHP)
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8000:80"  # Mapea el puerto 80 del contenedor al puerto 8000 del host
+    volumes:
+      - ./backend:/var/www/html  # Sincroniza el código PHP del host al contenedor
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
