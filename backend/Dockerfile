@@ -26,7 +26,10 @@ WORKDIR /var/www/html
 
 # Paso 5: Copiar el código PHP al contenedor
 COPY ./backend/composer.* ./
-RUN composer install --no-dev --optimize-autoloader
+RUN composer validate \
+    && composer install --no-dev --optimize-autoloader \
+    && composer audit \
+    && rm -rf ~/.composer/cache/*
 COPY ./backend/src/ /var/www/html/
 
 # Create non-root user

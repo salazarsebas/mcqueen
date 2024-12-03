@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Send } from 'lucide-react';
 import { Toast } from '../components/Toast';
 
-const [notification, setNotification] = useState({ show: false, message: '', type: '' });
-
 export default function Contact() {
+  const [notification, setNotification] = useState({ show: false, message: '', type: '' });
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -132,6 +131,12 @@ export default function Contact() {
           <Send className="ml-2 inline-block w-5 h-5" />
         </button>
       </form>
+      <Toast
+        show={notification.show}
+        message={notification.message}
+        type={notification.type}
+        onClose={() => setNotification({ ...notification, show: false })}
+      />
     </div>
   );
 }

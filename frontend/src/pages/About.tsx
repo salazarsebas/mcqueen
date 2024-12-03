@@ -13,6 +13,12 @@ interface Value {
   description: string;
 }
 
+const STORE_LOCATION = {
+  lat: 34.0696147806083,
+  lng: -118.40144168478264,
+  address: 'Beverly Hills, CA 90210'
+};
+
 // data/about.ts
 export const COMPANY_STATS: Stat[] = [
   { label: 'Years of Experience', value: '25+' },
@@ -117,11 +123,6 @@ export default function About() {
       <div className="text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Location</h2>
         <div className="aspect-w-16 aspect-h-9">
-          const STORE_LOCATION = {
-            lat: 34.0696147806083,
-            lng: -118.40144168478264,
-            address: 'Beverly Hills, CA 90210'
-          };
           <iframe
             src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&q=${encodeURIComponent(STORE_LOCATION.address)}`}
             width="100%"
