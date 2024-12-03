@@ -11,13 +11,6 @@ import Inventory from './pages/Inventory';
 import About from './pages/About';
 import Contact from './pages/Contact';
 
-const SERVICES = [
-  { name: 'Car Sales', path: '/services/sales' },
-  { name: 'Financing', path: '/services/financing' },
-  { name: 'Trade-In', path: '/services/trade-in' },
-  { name: 'Maintenance', path: '/services/maintenance' },
-];
-
 function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
   const location = useLocation();
   const isActive = location.pathname.startsWith(to);
@@ -85,18 +78,6 @@ function App() {
                   <li><Link to="/inventory" className="hover:text-white">Inventory</Link></li>
                   <li><Link to="/about" className="hover:text-white">About Us</Link></li>
                   <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Services</h3>
-                <ul className="space-y-2 text-gray-400">
-                  {SERVICES.map(({ name, path }) => (
-                    <li key={path}>
-                      <Link to={path} className="hover:text-white transition-colors">
-                        {name}
-                      </Link>
-                    </li>
-                ))}
                 </ul>
               </div>
               <div>

@@ -16,7 +16,7 @@ interface Value {
 const STORE_LOCATION = {
   lat: 34.0696147806083,
   lng: -118.40144168478264,
-  address: 'Beverly Hills, CA 90210'
+  address: 'Cartago, CA 90210'
 };
 
 // data/about.ts
@@ -124,7 +124,7 @@ export default function About() {
         <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Location</h2>
         <div className="aspect-w-16 aspect-h-9">
           <iframe
-            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&q=${encodeURIComponent(STORE_LOCATION.address)}`}
+            src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d251504.15318149567!2d-84.41477380546877!3d9.95454750000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fb4f391be72f%3A0x272928de345334e3!2sPurdy%20Motor!5e0!3m2!1ses-419!2scr!4v1733257467608!5m2!1ses-419!2scr`}
             width="100%"
             height="450"
             style={{ border: 0 }}
@@ -139,3 +139,4 @@ export default function About() {
     </main>
   );
 }
+
