@@ -16,6 +16,17 @@ export default function Inventory() {
     return matchesSearch && matchesPrice && matchesFuel;
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  if (isLoading) {
+    return <div className="text-center py-12"><LoadingSpinner /></div>;
+  }
+
+  if (error) {
+    return <div className="text-center py-12 text-red-600">Error: {error.message}</div>;
+  }
+
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
@@ -55,10 +66,11 @@ export default function Inventory() {
                 <h3 className="font-medium mb-3">Fuel Type</h3>
                 <div className="space-y-2">
                   {['Gasoline', 'Electric', 'Hybrid'].map((type) => (
-                    <label key={type} className="flex items-center gap-2">
+                    <label key={type} className="flex items-center gap-2" role="checkbox" aria-checked={selectedFuelTypes.includes(type)}>
                       <input
                         type="checkbox"
                         checked={selectedFuelTypes.includes(type)}
+                        aria-label={`Filter by ${type} fuel type`}
                         onChange={(e) => {
                           if (e.target.checked) {
                             setSelectedFuelTypes([...selectedFuelTypes, type]);
@@ -66,7 +78,7 @@ export default function Inventory() {
                             setSelectedFuelTypes(selectedFuelTypes.filter(t => t !== type));
                           }
                         }}
-                        className="rounded text-blue-600"
+                        className="rounded text-blue-600 focus:ring-2 focus:ring-blue-500"
                       />
                       <span className="text-gray-700">{type}</span>
                     </label>
@@ -87,8 +99,16 @@ export default function Inventory() {
           </div>
 
           {filteredCars.length === 0 && (
-            <div className="text-center py-12">
+            <div className="text-center py-12 space-y-4">
               <p className="text-gray-600">No cars match your current filters.</p>
+              <p className="text-sm text-gray-500">Try adjusting your filters or clearing them to see more results.</p>
+              <button onClick={() => {
+                setSearchTerm('');
+                setPriceRange([0, 300000]);
+                setSelectedFuelTypes([]);
+              }} className="text-blue-600 hover:text-blue-700">
+                Clear all filters
+              </button>
             </div>
           )}
         </div>

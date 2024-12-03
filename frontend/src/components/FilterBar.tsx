@@ -1,4 +1,6 @@
 import React from 'react';
+import { useMemo } from 'react';
+import debounce from 'lodash/debounce';
 import { Search, SlidersHorizontal } from 'lucide-react';
 
 interface FilterBarProps {
@@ -14,12 +16,21 @@ export default function FilterBar({ onSearch }: FilterBarProps) {
           type="text"
           placeholder="Search cars..."
           className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          onChange={(e) => onSearch(e.target.value)}
+          onChange={useMemo(
+            () => debounce((e) => onSearch(e.target.value), 300),
+            [onSearch]
+          )}
         />
       </div>
-      <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+      <button 
+        onClick={onFilterClick}
+        className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+          filters?.active ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 hover:bg-gray-200'
+        }`}
+      >
         <SlidersHorizontal className="w-5 h-5" />
         <span>Filters</span>
+        <span>Filters {filters?.count ? `(${filters.count})` : ''}</span>
       </button>
     </div>
   );

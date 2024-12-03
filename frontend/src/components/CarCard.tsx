@@ -15,7 +15,10 @@ export default function CarCard({ image, name, price, year, mileage, fuelType }:
     <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-[1.02] hover:shadow-xl">
       <div className="relative">
         <img src={image} alt={name} className="w-full h-48 object-cover" />
-        <button className="absolute top-3 right-3 p-2 bg-white/90 rounded-full hover:bg-white">
+        <button 
+          aria-label={`Add ${name} to favorites`}
+          className="absolute top-3 right-3 p-2 bg-white/90 rounded-full hover:bg-white"
+        >
           <Heart className="w-5 h-5 text-gray-600 hover:text-red-500" />
         </button>
       </div>

@@ -1,6 +1,11 @@
 import React from 'react';
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 import { Car } from 'lucide-react';
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import ErrorBoundary from './components/ErrorBoundary';
+import NotFound from './pages/NotFound';
 import Home from './pages/Home';
 import Inventory from './pages/Inventory';
 import About from './pages/About';
@@ -8,14 +13,15 @@ import Contact from './pages/Contact';
 
 function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
   const location = useLocation();
-  const isActive = location.pathname === to;
+  const isActive = location.pathname.startsWith(to);
   
   return (
     <Link
       to={to}
+      role="menuitem"
       className={`${
         isActive ? 'text-blue-600' : 'text-gray-600'
-      } hover:text-blue-600 transition-colors`}
+      } hover:text-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-3 py-2`}
     >
       {children}
     </Link>
@@ -44,10 +50,13 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/inventory" element={<Inventory />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route element={<ErrorBoundary />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/inventory" element={<Inventory />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
         </Routes>
 
         <footer className="bg-gray-800 text-white mt-16">
@@ -74,10 +83,20 @@ function App() {
               <div>
                 <h3 className="text-lg font-semibold mb-4">Services</h3>
                 <ul className="space-y-2 text-gray-400">
-                  <li><a href="#" className="hover:text-white">Car Sales</a></li>
-                  <li><a href="#" className="hover:text-white">Financing</a></li>
-                  <li><a href="#" className="hover:text-white">Trade-In</a></li>
-                  <li><a href="#" className="hover:text-white">Maintenance</a></li>
+                  const SERVICES = [
+                    { name: 'Car Sales', path: '/services/sales' },
+                    { name: 'Financing', path: '/services/financing' },
+                    { name: 'Trade-In', path: '/services/trade-in' },
+                    { name: 'Maintenance', path: '/services/maintenance' },
+                ];
+
+                  {SERVICES.map(({ name, path }) => (
+                    <li key={path}>
+                      <Link to={path} className="hover:text-white transition-colors">
+                        {name}
+                      </Link>
+                    </li>
+                ))}
                 </ul>
               </div>
               <div>

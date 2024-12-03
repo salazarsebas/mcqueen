@@ -1,6 +1,33 @@
 import React from 'react';
 import { Shield, Award, Users, Clock } from 'lucide-react';
 
+// types/about.ts
+interface Stat {
+  label: string;
+  value: string;
+}
+
+interface Value {
+  icon: typeof Shield;
+  title: string;
+  description: string;
+}
+
+// data/about.ts
+export const COMPANY_STATS: Stat[] = [
+  { label: 'Years of Experience', value: '25+' },
+  // ... other stats
+];
+
+export const COMPANY_VALUES: Value[] = [
+  {
+    icon: Shield,
+    title: 'Quality Assurance',
+    description: 'Every vehicle undergoes rigorous inspection and certification.'
+  },
+  // ... other values
+];
+
 export default function About() {
   const stats = [
     { label: 'Years of Experience', value: '25+' },
@@ -43,11 +70,14 @@ export default function About() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
         <div>
-          <img
-            src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80"
-            alt="Luxury Showroom"
-            className="rounded-lg shadow-lg w-full h-[400px] object-cover"
-          />
+          <div className="relative w-full h-[400px]">
+            <img
+              src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80"
+              alt="LuxuryCars Beverly Hills showroom featuring premium vehicles and modern architecture"
+              className="rounded-lg shadow-lg w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
         </div>
         <div className="flex flex-col justify-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
@@ -87,13 +117,20 @@ export default function About() {
       <div className="text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Location</h2>
         <div className="aspect-w-16 aspect-h-9">
+          const STORE_LOCATION = {
+            lat: 34.0696147806083,
+            lng: -118.40144168478264,
+            address: 'Beverly Hills, CA 90210'
+          };
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.7153670136366!2d-118.40144168478264!3d34.0696147806083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2b93cca9c7ab1%3A0xe51cfa5d7f6819a4!2sBeverly%20Hills%2C%20CA%2090210!5e0!3m2!1sen!2sus!4v1645564750986!5m2!1sen!2sus"
+            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&q=${encodeURIComponent(STORE_LOCATION.address)}`}
             width="100%"
             height="450"
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="LuxuryCars Beverly Hills Location"
             className="rounded-lg shadow-lg"
           ></iframe>
         </div>

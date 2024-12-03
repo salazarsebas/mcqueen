@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Send } from 'lucide-react';
+import { Toast } from '../components/Toast';
+
+const [notification, setNotification] = useState({ show: false, message: '', type: '' });
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -29,17 +32,36 @@ export default function Contact() {
       formDataToSend.append('subject', formData.subject); // Add subject field
       formDataToSend.append('message', formData.message);
 
-      const response = await fetch('http://localhost/backend/contact.php', {
+      const BACKEND_URL = import.meta.env.REACT_APP_BACKEND_URL || 'http://localhost';
+      const response = await fetch(`${BACKEND_URL}/backend/contact.php`, {
         method: 'POST',
+        credentials: 'include',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        },
         body: formDataToSend,
       });
 
+      const validateForm = (data: typeof formData) => {
+        const errors: Partial<typeof formData> = {};
+        
+        if (!data.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+          errors.email = 'Invalid email format';
+        }
+        
+        if (data.phone && !data.phone.match(/^\d{3}-\d{3}-\d{4}$/)) {
+          errors.phone = 'Invalid phone format (123-456-7890)';
+        }
+        
+        return errors;
+      };
+
       const result = await response.json();
       if (result.status === 'success') {
-        alert('Message sent successfully!');
+        setNotification({ show: true, message: 'Message sent successfully!', type: 'success' });
         setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
       } else {
-        alert(`Error: ${result.message}`);
+        setNotification({ show: true, message: `Error: ${result.message}`, type: 'error' });
       }
     } catch (error) {
       console.error('Error sending message:', error);

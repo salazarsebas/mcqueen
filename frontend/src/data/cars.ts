@@ -1,4 +1,14 @@
-export const cars = [
+interface Car {
+  id: number;
+  image: string;
+  name: string;
+  price: number;
+  year: number;
+  mileage: string;
+  fuelType: string;
+}
+
+export const cars: Car[] = [
   {
     id: 1,
     image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80',

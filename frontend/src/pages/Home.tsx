@@ -5,9 +5,13 @@ import CarCard from '../components/CarCard';
 import { cars } from '../data/cars';
 
 export default function Home() {
+  const [isLoading, setIsLoading] = React.useState(false);
   const [searchTerm, setSearchTerm] = React.useState('');
-  const filteredCars = cars.filter(car =>
-    car.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredCars = React.useMemo(() => 
+    cars.filter(car =>
+      car.name.toLowerCase().includes(searchTerm.toLowerCase())
+    ),
+    [searchTerm]
   );
 
   return (
