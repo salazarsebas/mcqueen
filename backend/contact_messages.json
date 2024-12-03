@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Sebastián",
+        "email": "test@example.com", 
+        "phone": "123456789",
+        "subject": "Test",
+        "message": "Hello",
+        "date": "2024-01-27 01:37:55"
+    },
+    {
+        "name": "Miguel",
+        "email": "miguel@correo.com",
+        "phone": "123456789", 
+        "subject": "Yahoo",
+        "message": "gm",
+        "date": "2024-01-27 01:59:26"
+    },
+    {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "phone": "555-0123",
+        "subject": "Sales Inquiry", 
+        "message": "I'm interested in your products",
+        "date": "2024-01-27 02:15:00"
+    },
+    {
+        "name": "Jane Smith",
+        "email": "jane@example.com",
+        "phone": "555-4567",
+        "subject": "Service Request",
+        "message": "Need help with installation",
+        "date": "2024-01-27 02:30:00"
+    }
+]
