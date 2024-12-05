@@ -1,0 +1,48 @@
+name: SonarQube Analysis
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  sonarqube:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+        extensions: mbstring
+        coverage: none
+
+    - name: Install dependencies
+      run: composer install --no-scripts --no-progress --prefer-dist
+
+    - name: Run PHPUnit for Coverage
+      run: |
+        mkdir -p coverage
+        ./vendor/bin/phpunit --coverage-clover=coverage/phpunit-coverage.xml
+
+    - name: Install Sonar Scanner
+      run: npm install -g sonar-scanner
+
+    - name: Run SonarQube Analysis
+      env:
+        SONAR_HOST_URL: ${{ secrets.https://sonarcloud.io/project/overview?id=salazarsebas_mcqueen2 }}
+        SONAR_TOKEN: ${{ secrets.bdf6764f2b72a148980ab5f4d534f444ec2615aa }}
+      run: |
+        sonar-scanner \
+          -Dsonar.projectKey=mcqueen \
+          -Dsonar.sources=backend,frontend \
+          -Dsonar.tests=tests \
+          -Dsonar.host.url=${{ secrets.https://sonarcloud.io/project/overview?id=salazarsebas_mcqueen2 }} \
+          -Dsonar.login=${{ secrets.bdf6764f2b72a148980ab5f4d534f444ec2615aa }} \
+          -Dsonar.php.coverage.reportPaths=coverage/phpunit-coverage.xml
