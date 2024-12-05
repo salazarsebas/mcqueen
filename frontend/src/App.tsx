@@ -31,13 +31,13 @@ function App() {
             <div className="flex items-center justify-between">
               <Link to="/" className="flex items-center gap-2">
                 <Car className="w-8 h-8 text-blue-600" />
-                <span className="text-2xl font-bold text-gray-800">LuxuryCars</span>
+                <span className="text-2xl font-bold text-gray-800">McqueenCars</span>
               </Link>
               <div className="hidden md:flex items-center gap-8">
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/inventory">Inventory</NavLink>
-                <NavLink to="/about">About</NavLink>
-                <NavLink to="/contact">Contact</NavLink>
+                <NavLink to="/">Carros</NavLink>
+                <NavLink to="/inventory">Inventario</NavLink>
+                <NavLink to="/about">Sobre nosotros</NavLink>
+                <NavLink to="/contact">Contacto</NavLink>
               </div>
             </div>
           </div>
@@ -56,42 +56,33 @@ function App() {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <Car className="w-6 h-6" />
-                  <span className="text-xl font-bold">LuxuryCars</span>
+                  <span className="text-xl font-bold">McqueenCars</span>
                 </div>
                 <p className="text-gray-400">
-                  Your trusted partner in finding the perfect luxury vehicle.
+                  Su socio de confianza para encontrar el vehículo de lujo perfecto.
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+                <h3 className="text-lg font-semibold mb-4">Links</h3>
                 <ul className="space-y-2 text-gray-400">
-                  <li><Link to="/" className="hover:text-white">Home</Link></li>
-                  <li><Link to="/inventory" className="hover:text-white">Inventory</Link></li>
-                  <li><Link to="/about" className="hover:text-white">About Us</Link></li>
-                  <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
+                  <li><Link to="/" className="hover:text-white">Carros</Link></li>
+                  <li><Link to="/inventory" className="hover:text-white">Inventario</Link></li>
+                  <li><Link to="/about" className="hover:text-white">Sobre nosotros</Link></li>
+                  <li><Link to="/contact" className="hover:text-white">Contacto</Link></li>
                 </ul>
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-4">Services</h3>
+                <h3 className="text-lg font-semibold mb-4">Contactanos</h3>
                 <ul className="space-y-2 text-gray-400">
-                  <li><a href="#" className="hover:text-white">Car Sales</a></li>
-                  <li><a href="#" className="hover:text-white">Financing</a></li>
-                  <li><a href="#" className="hover:text-white">Trade-In</a></li>
-                  <li><a href="#" className="hover:text-white">Maintenance</a></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-                <ul className="space-y-2 text-gray-400">
-                  <li>123 Luxury Lane</li>
-                  <li>Beverly Hills, CA 90210</li>
-                  <li>+1 (555) 123-4567</li>
-                  <li>info@luxurycars.com</li>
+                  <li>1234 San Luis</li>
+                  <li>Cartago, CA 902109</li>
+                  <li>+506 73283900</li>
+                  <li>info@mqueencars.com</li>
                 </ul>
               </div>
             </div>
             <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-              <p>© 2024 LuxuryCars. All rights reserved.</p>
+              <p>© 2024 MqueenCars.</p>
             </div>
           </div>
         </footer>

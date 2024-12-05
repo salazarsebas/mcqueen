@@ -6,7 +6,7 @@ export const cars = [
     price: 84900,
     year: 2023,
     mileage: '12,450 mi',
-    fuelType: 'Gasoline'
+    fuelType: 'Gasolina'
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const cars = [
     price: 118000,
     year: 2023,
     mileage: '8,320 mi',
-    fuelType: 'Gasoline'
+    fuelType: 'Gasolina'
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export const cars = [
     price: 161100,
     year: 2022,
     mileage: '5,400 mi',
-    fuelType: 'Gasoline'
+    fuelType: 'Gasolina'
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ export const cars = [
     price: 147500,
     year: 2023,
     mileage: '2,800 mi',
-    fuelType: 'Electric'
+    fuelType: 'Electrico'
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ export const cars = [
     price: 129900,
     year: 2023,
     mileage: '1,200 mi',
-    fuelType: 'Electric'
+    fuelType: 'Electrico'
   },
   {
     id: 6,
@@ -51,7 +51,7 @@ export const cars = [
     price: 248000,
     year: 2023,
     mileage: '950 mi',
-    fuelType: 'Gasoline'
+    fuelType: 'Gasolina'
   },
   {
     id: 7,
@@ -60,7 +60,7 @@ export const cars = [
     price: 276500,
     year: 2023,
     mileage: '1,850 mi',
-    fuelType: 'Gasoline'
+    fuelType: 'Gasolina'
   },
   {
     id: 8,
@@ -69,7 +69,7 @@ export const cars = [
     price: 311900,
     year: 2023,
     mileage: '890 mi',
-    fuelType: 'Gasoline'
+    fuelType: 'Gasolina'
   },
   {
     id: 9,
@@ -78,7 +78,7 @@ export const cars = [
     price: 202500,
     year: 2023,
     mileage: '3,200 mi',
-    fuelType: 'Gasoline'
+    fuelType: 'Gasolina'
   },
   {
     id: 10,
@@ -87,6 +87,6 @@ export const cars = [
     price: 185000,
     year: 2023,
     mileage: '2,100 mi',
-    fuelType: 'Electric'
+    fuelType: 'Electrico'
   }
 ];

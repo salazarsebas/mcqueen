@@ -4,9 +4,6 @@ import { Send } from 'lucide-react';
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
-    phone: '',
-    subject: '',
     message: '',
   });
 
@@ -24,9 +21,6 @@ export default function Contact() {
       // Create FormData object to match PHP $_POST format
       const formDataToSend = new FormData();
       formDataToSend.append('name', formData.name);
-      formDataToSend.append('email', formData.email);
-      formDataToSend.append('phone', formData.phone);
-      formDataToSend.append('subject', formData.subject); // Add subject field
       formDataToSend.append('message', formData.message);
 
       const response = await fetch('http://localhost/backend/contact.php', {
@@ -36,14 +30,14 @@ export default function Contact() {
 
       const result = await response.json();
       if (result.status === 'success') {
-        alert('Message sent successfully!');
-        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+        alert('Mensaje enviado con éxito!');
+        setFormData({ name: '', message: '' });
       } else {
         alert(`Error: ${result.message}`);
       }
     } catch (error) {
-      console.error('Error sending message:', error);
-      alert('There was an error sending your message. Please try again later.');
+      console.error('Error enviando mensaje:', error);
+      alert('Hubo un error al enviar su mensaje. Por favor, inténtelo de nuevo más tarde.');
     } finally {
       setIsSubmitting(false);
     }
@@ -51,50 +45,20 @@ export default function Contact() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-center mb-8">Contact Us</h1>
+      <h1 className="text-3xl font-bold text-center mb-8">Contactanos</h1>
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4">
         <input
           type="text"
           name="name"
-          placeholder="Full Name"
+          placeholder="Nombre"
           value={formData.name}
           onChange={handleChange}
           required
           className="w-full px-4 py-2 border rounded"
         />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-2 border rounded"
-        />
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Phone"
-          value={formData.phone}
-          onChange={handleChange}
-          className="w-full px-4 py-2 border rounded"
-        />
-        <select
-          name="subject"
-          value={formData.subject}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-2 border rounded"
-        >
-          <option value="">Select Subject</option>
-          <option value="sales">Sales Inquiry</option>
-          <option value="service">Service Request</option>
-          <option value="parts">Parts Inquiry</option>
-          <option value="other">Other</option>
-        </select>
         <textarea
           name="message"
-          placeholder="Your Message"
+          placeholder="Su mensaje"
           value={formData.message}
           onChange={handleChange}
           required
@@ -106,7 +70,7 @@ export default function Contact() {
           disabled={isSubmitting}
           className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
         >
-          {isSubmitting ? 'Sending...' : 'Send Message'}
+          {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
           <Send className="ml-2 inline-block w-5 h-5" />
         </button>
       </form>

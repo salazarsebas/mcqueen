@@ -19,8 +19,8 @@ export default function Inventory() {
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Our Inventory</h1>
-        <p className="text-gray-600">Discover our complete collection of luxury vehicles</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Nuestra colección</h1>
+        <p className="text-gray-600">Descubre nuestra colección completa de vehículos de lujo</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -28,12 +28,12 @@ export default function Inventory() {
           <div className="bg-white p-6 rounded-lg shadow-md">
             <div className="flex items-center gap-2 mb-6">
               <Filter className="w-5 h-5 text-blue-600" />
-              <h2 className="text-lg font-semibold">Filters</h2>
+              <h2 className="text-lg font-semibold">Filtros</h2>
             </div>
 
             <div className="space-y-6">
               <div>
-                <h3 className="font-medium mb-3">Price Range</h3>
+                <h3 className="font-medium mb-3">Rango de precio</h3>
                 <div className="space-y-2">
                   <input
                     type="range"
@@ -52,9 +52,9 @@ export default function Inventory() {
               </div>
 
               <div>
-                <h3 className="font-medium mb-3">Fuel Type</h3>
+                <h3 className="font-medium mb-3">Tipo de combustible</h3>
                 <div className="space-y-2">
-                  {['Gasoline', 'Electric', 'Hybrid'].map((type) => (
+                  {['Gasolina', 'Eléctrico', 'Híbrido'].map((type) => (
                     <label key={type} className="flex items-center gap-2">
                       <input
                         type="checkbox"
@@ -88,7 +88,7 @@ export default function Inventory() {
 
           {filteredCars.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-600">No cars match your current filters.</p>
+              <p className="text-gray-600">No hay carros que coincidan con sus filtros actuales.</p>
             </div>
           )}
         </div>
