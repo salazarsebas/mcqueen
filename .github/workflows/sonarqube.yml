@@ -36,13 +36,13 @@ jobs:
 
     - name: Run SonarQube Analysis
       env:
-        SONAR_HOST_URL: ${{ secrets.https://sonarcloud.io/project/overview?id=salazarsebas_mcqueen2 }}
-        SONAR_TOKEN: ${{ secrets.bdf6764f2b72a148980ab5f4d534f444ec2615aa }}
+        SONAR_HOST_URL: ${{ secrets.http://localhost:9000}}
+        SONAR_TOKEN: ${{ secrets.sqp_b877d54f8bd1b67ee1d303d3b7886458e444a992 }}
       run: |
         sonar-scanner \
           -Dsonar.projectKey=mcqueen \
           -Dsonar.sources=backend,frontend \
           -Dsonar.tests=tests \
-          -Dsonar.host.url=${{ secrets.https://sonarcloud.io/project/overview?id=salazarsebas_mcqueen2 }} \
-          -Dsonar.login=${{ secrets.bdf6764f2b72a148980ab5f4d534f444ec2615aa }} \
+          -Dsonar.host.url=${{ secrets.http://localhost:9000 }} \
+          -Dsonar.login=${{ secrets.sqp_b877d54f8bd1b67ee1d303d3b7886458e444a992 }} \
           -Dsonar.php.coverage.reportPaths=coverage/phpunit-coverage.xml
