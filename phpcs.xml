@@ -9,6 +9,8 @@
 
     <!-- Exclude specific rules (if necessary) -->
     <exclude name="Generic.Files.LineLength.TooLong" />
+    <exclude-pattern>**/vendor/**</exclude-pattern>
+    <exclude-pattern>**/node_modules/**</exclude-pattern>
 
     <!-- Report settings -->
     <arg name="basepath" value="./" />

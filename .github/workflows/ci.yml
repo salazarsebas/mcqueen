@@ -1,0 +1,51 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  php-analysis:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+    - name: Install dependencies
+      run: composer install
+    - name: Run PHP CodeSniffer
+      run: composer phpcs backend/
+
+  jest-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+    - name: Install dependencies
+      run: npm install
+    - name: Run Jest
+      run: npm test
+
+  sonar-analysis:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Set up Sonar Scanner
+      run: npm install -g sonar-scanner
+    - name: Run Sonar Scanner
+      env:
+        SONAR_HOST_URL: ${{ secrets.http://localhost:9000 }}
+        SONAR_TOKEN: ${{ secrets.sqp_b877d54f8bd1b67ee1d303d3b7886458e444a992 }}
+      run: sonar-scanner
