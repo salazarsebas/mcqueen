@@ -18,8 +18,12 @@ Para ejecutar este proyecto localmente, necesitas tener lo siguiente instalado:
    - Un administrador de dependencias para PHP, usado para gestionar bibliotecas del proyecto.
    - Instala Composer desde [getcomposer.org](https://getcomposer.org/).
 
-4. **Sonar Scanner** (opcional para análisis de SonarQube):
+4. **Sonar Scanner**:
    - Descarga el CLI de Sonar Scanner desde el [sitio oficial](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/).
+
+5. **PHPUnit**:
+   - PHPUnit se usa para pruebas unitarias en PHP. Las dependencias ya están configuradas en el archivo `composer.json`.
+   - Se instalará automáticamente al ejecutar `composer install`.
 
 ---
 
@@ -83,7 +87,19 @@ Para corregir automáticamente problemas de estilo de código:
 composer phpcbf backend/
 ```
 
-### 3. Análisis de SonarQube (Opcional)
+### 3. Pruebas de PHPUnit (Backend)
+PHPUnit se utiliza para pruebas unitarias en el backend. Para ejecutar las pruebas:
+```bash
+vendor/bin/phpunit backend/tests/Test.php
+```
+
+### 4. Análisis de estilo con ESLint (Frontend)
+ESLint analiza el código fuente del frontend para garantizar el cumplimiento de buenas prácticas. Ejecuta:
+```bash
+npm run lint
+```
+
+### 5. Análisis de SonarQube
 1. Asegúrate de que SonarQube esté corriendo localmente o en un servidor (predeterminado: `http://localhost:9000`):
    ```bash
    docker run -d --name sonarqube -p 9000:9000 sonarqube
@@ -125,7 +141,7 @@ composer phpcbf backend/
 
 ---
 
-## Additional Commands
+## Comandos adicionales
 
 ### Detener contenedores de Docker
 ```bash
@@ -136,3 +152,8 @@ docker-compose down
 ```bash
 docker-compose up --build
 ```
+
+
+
+
+
