@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import {render, screen, fireEvent} from '@testing-library/react';
 import '@testing-library/jest-dom';
-import FilterBar from './FilterBar';
+import FilterBar from '../src/components/FilterBar.tsx';
 
 describe('FilterBar Component', () => {
   test('renders the input field and button', () => {

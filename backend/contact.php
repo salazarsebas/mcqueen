@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
+$file = 'contact.message.json';
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
-function saveMessage(string $name, string $messageText, string $file = 'contact.message.json'): array
+function saveMessage(string $name, string $messageText, string $file): array
 {
     $message = [
         'name' => $name,

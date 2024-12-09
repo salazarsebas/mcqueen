@@ -6,6 +6,7 @@ module.exports = {
     },
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
     coverageDirectory: './coverage',
+    transformIgnorePatterns: ['/node_modules/'],
     collectCoverage: true,
     collectCoverageFrom: [
       'frontend/src/**/*.{js,ts}',

@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
-import CarCard from './CarCard';
+import CarCard from '../src/components/CarCard.tsx';
 
 describe('CarCard Component', () => {
   const defaultProps = {
